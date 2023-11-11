@@ -8,17 +8,21 @@
     <header>
       <nav class="navbar">
         <a href="/">Home</a>
+        {{#if loggedIn}}
+          <button id="logout">Logout</button>
+        {{else}}
+          <a href="/login">Login</a>
+        {{/if}}
         <a href="/dashboard">Dashboard</a>
-        <a href="/login">Login</a>
       </nav>
-      <div class="">
-
-      </div>
     </header>
     <main>
       {{{body}}}
     </main>
     <footer class="footerContainer">
     </footer>
+    {{#if loggedIn}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
   </body>
 </html>
