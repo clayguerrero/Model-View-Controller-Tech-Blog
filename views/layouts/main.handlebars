@@ -1,28 +1,36 @@
 <html lang="en">
+
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tech Blog</title>
+    <link rel="stylesheet" type="text/css" href="/css/jass.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
   </head>
+
   <body>
     <header>
-      <nav class="navbar">
-        <a href="/">Home</a>
-        {{#if loggedIn}}
-          <button id="logout">Logout</button>
-        {{else}}
-          <a href="/login">Login</a>
-        {{/if}}
-        <a href="/dashboard">Dashboard</a>
-      </nav>
+      <h1>Welcome to the Four Seasons Museum</h1>
     </header>
+    <nav>
+      <a href="/">Home</a>
+      {{#if loggedIn}}
+        <button id="logout" class="btn-no-style">Logout</button>
+      {{else}}
+        <a href="/login">Login</a>
+      {{/if}}
+    </nav>
     <main>
-      {{{body}}}
+      <aside>
+        <h2>Enjoy the galleries!</h2>
+      </aside>
+      <div class="gallery">
+        {{{body}}}
+      </div>
     </main>
-    <footer class="footerContainer">
-    </footer>
     {{#if loggedIn}}
       <script src="/js/logout.js"></script>
     {{/if}}
   </body>
+
 </html>
