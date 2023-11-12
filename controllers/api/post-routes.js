@@ -1,5 +1,5 @@
-const router = require('express').Router()
-const { User, Post } = require('../../models')
+const router = require("express").Router();
+const { User, Post } = require("../../models");
 
 router.get("/", async (req, res) => {
   try {
@@ -17,5 +17,5 @@ router.get("/", async (req, res) => {
   }
 });
 
+module.exports = router;
 
-module.exports = router

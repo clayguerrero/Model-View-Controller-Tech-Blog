@@ -25,13 +25,28 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.get("/signup", (res, req) => {
-  if (req.session.loggedIn) {
-    res.redirect("/");
-    return;
+router.get("/post/:id", async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        { model: User, attributes: ["username"] },
+        {
+          model: Comment,
+          include: [{ model: User, attributes: ["username"] }],
+        },
+      ],
+    });
+
+    const posts = postData.get({plain: true})
+
+    res.render('post', {
+      ...this.post,
+      loggedIn: req.session.loggedIn
+    })
+
+  } catch (error) {
+    res.status(500).json({message: 'cannot get post by id'})
   }
-  res.redirect('/login')
-  return
 });
 
 module.exports = router;
