@@ -1,0 +1,12 @@
+<main class="container">
+  <h2 class="posts"></h2>
+  <div>
+    {{#each posts}}
+      <div class="postContainer">
+        <p>{{user.username}}'s post</p>
+        <a href="/post/{{id}}">{{title}}</a>
+        <p>{{post}}</p>
+      </div>
+    {{/each}}
+  </div>
+</main>
