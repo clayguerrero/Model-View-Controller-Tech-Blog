@@ -8,25 +8,30 @@ router.get("/", async (req, res) => {
     });
 
     const posts = postData.map((post) => post.get({ plain: true }));
-    res.render('homepage', {
+    res.render("homepage", {
       posts,
       loggedIn: req.session.loggedIn,
-    })
-
+    });
   } catch (error) {
-    res.status(500).json({message: 'no db found (all post data)'})
+    res.status(500).json({ message: "no db found (all post data)" });
   }
 });
-
-
 
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
     return;
   }
-
   res.render("login");
+});
+
+router.get("/signup", (res, req) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+  res.redirect('/login')
+  return
 });
 
 module.exports = router;
