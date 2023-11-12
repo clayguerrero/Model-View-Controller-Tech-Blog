@@ -37,15 +37,14 @@ router.get("/post/:id", async (req, res) => {
       ],
     });
 
-    const posts = postData.get({plain: true})
+    const post = postData.get({ plain: true });
 
-    res.render('post', {
-      ...this.post,
-      loggedIn: req.session.loggedIn
-    })
-
+    res.render("post", {
+      ...post,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (error) {
-    res.status(500).json({message: 'cannot get post by id'})
+    res.status(500).json({ message: "cannot get post by id" });
   }
 });
 
